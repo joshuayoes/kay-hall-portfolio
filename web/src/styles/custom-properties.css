@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap");
+
 :root {
-  --font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-sans: "Playfair Display", serif;
 
   --color-black: #202123;
   --color-dark-gray: #32373e;
@@ -7,7 +9,7 @@
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
-  --color-accent: #156dff;
+  --color-accent: #9e0500;
 
   /* Typography */
   --unit: 16;
