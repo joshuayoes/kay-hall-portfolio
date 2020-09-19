@@ -1,17 +1,12 @@
 import S from '@sanity/desk-tool/structure-builder'
 import MdSettings from 'react-icons/lib/md/settings'
-import {
-  MdPerson,
-  MdDescription,
-  MdLocalOffer
-} from 'react-icons/lib/md'
+import { MdPerson, MdDescription, MdLocalOffer } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
 const remoteURL = 'https://kay-hall-portfolio.netlify.app'
 const localURL = 'http://localhost:8000'
-const previewURL =
-  window.location.hostname === 'localhost' ? localURL : remoteURL
+const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export const getDefaultDocumentNode = props => {
   /**
@@ -22,7 +17,7 @@ export const getDefaultDocumentNode = props => {
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   const { schemaType } = props
-  if (schemaType == 'post') {
+  if (schemaType === 'post') {
     return S.document().views([
       S.view.form(),
       S.view
@@ -76,9 +71,6 @@ export default () =>
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
       ...S.documentTypeListItems().filter(
-        listItem =>
-          !['category', 'author', 'post', 'siteSettings'].includes(
-            listItem.getId()
-          )
+        listItem => !['category', 'author', 'post', 'siteSettings'].includes(listItem.getId())
       )
     ])

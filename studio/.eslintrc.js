@@ -5,7 +5,7 @@ module.exports = {
   parser: 'babel-eslint',
   rules: {
     'react/prop-types': 0,
-    'object-curly-spacing': ['error', 'never']
+    'single-quotes': ['never']
   },
   settings: {
     react: {
