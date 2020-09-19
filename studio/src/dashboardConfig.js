@@ -33,14 +33,22 @@ export default {
             value: 'https://github.com/joshuayoes/kay-hall-portfolio',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://kay-hall-portfolio.netlify.app', category: 'apps' }
+          {
+            title: 'Frontend',
+            value: 'https://kay-hall.com',
+            category: 'apps'
+          }
         ]
       }
     },
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
-      options: { title: 'Recent blog posts', order: '_createdAt desc', types: ['post'] },
+      options: {
+        title: 'Recent blog posts',
+        order: '_createdAt desc',
+        types: ['post']
+      },
       layout: { width: 'medium' }
     }
   ]
