@@ -7,6 +7,13 @@ const query = graphql`
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
     }
+    resumes: allSanityFileAsset(sort: {order: DESC, fields: _createdAt}, filter: {}) {
+      edges {
+        node {
+          url
+        }
+      }
+    }  
   }
 `
 
@@ -21,17 +28,21 @@ function LayoutContainer (props) {
   return (
     <StaticQuery
       query={query}
-      render={data => {
-        if (!data.site) {
+      render={({site, resumes}) => {
+        if (!site || !resumes) {
           throw new Error(
             'Missing "Site settings". Open the Studio at http://localhost:3333 and some content in "Site settings"'
           )
         }
+
+        const latestResumeUrl = resumes.edges[0].node.url
+
         return (
           <Layout
             {...props}
             showNav={showNav}
-            siteTitle={data.site.title}
+            siteTitle={site.title}
+            resumeUrl={latestResumeUrl}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
           />
