@@ -25,6 +25,7 @@
   position: relative;
   padding-bottom: 66.666%;
   background: var(--color-very-light-gray);
+  overflow: hidden;
 
   @nest & img {
     position: absolute;
@@ -33,6 +34,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 500ms;
+  }
+
+  @nest & :hover {
+    transform: scale(1.4)
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .leadMediaThumb:hover {
+    transform: scale(1)
   }
 }
 
