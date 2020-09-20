@@ -52,6 +52,14 @@
   @nest & figure {
     margin: 0;
     padding: 0;
+    margin-bottom: 5ch;
+
+    @nest & figcaption {
+      margin-top: 1ch;
+      text-align: center;
+      letter-spacing: 0.5px;
+      color: var(--color-dark-gray);
+    }
 
     @nest & img {
       max-width: 100%;
