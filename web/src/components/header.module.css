@@ -57,8 +57,6 @@
 }
 
 .nav {
-  display: none;
-
   @nest & ul {
     margin: 0;
     padding: 0;
@@ -113,6 +111,15 @@
   }
 }
 
+.nav {
+  overflow: hidden; 
+  height: 0; 
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+}
+
 .showNav {
-  display: block;
+  opacity: 1;
+  height: auto; 
+  transition: height 0ms 0ms, opacity 600ms 0ms;
 }

@@ -31,6 +31,14 @@
   }
 }
 
+.grid li {
+  animation-name: fadeIn;
+  animation-duration: 600ms;
+  animation-delay: calc(var(--order) * 200ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
 .browseMoreNav {
   composes: small from './typography.module.css';
   margin-top: 1rem;
@@ -47,5 +55,16 @@
         color: var(--color-accent);
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

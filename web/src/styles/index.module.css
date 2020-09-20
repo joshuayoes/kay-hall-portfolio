@@ -1,0 +1,25 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+.header {
+    animation-name: fadeIn;
+    animation-duration: 600ms;
+    animation-delay: 200ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;  
+}
+
+.p {
+    animation-name: fadeIn;
+    animation-duration: 600ms;
+    animation-delay: 400ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;  
+}

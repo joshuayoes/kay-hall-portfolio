@@ -10,8 +10,8 @@ function BlogPostPreviewGrid (props) {
       {props.title && <h2 className={styles.headline}>{props.title}</h2>}
       <ul className={styles.grid}>
         {props.nodes &&
-          props.nodes.map(node => (
-            <li key={node.id}>
+          props.nodes.map((node, index) => (
+            <li key={node.id} style={{'--order': index}}>
               <BlogPostPreview {...node} />
             </li>
           ))}
