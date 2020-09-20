@@ -19,6 +19,17 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Kay Hall Portfolio',
+        short_name: 'Kay Hall',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#000',
+        icon: 'src/images/icon.png' // This path is relative to the root of the site.
+      }
     }
   ]
 }
