@@ -57,6 +57,11 @@
 }
 
 .nav {
+  overflow: hidden; 
+  height: 0; 
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+
   @nest & ul {
     margin: 0;
     padding: 0;
@@ -97,8 +102,9 @@
   }
 
   @media (--media-min-small) {
-    display: block;
-
+    opacity: 1;
+    height: auto; 
+  
     @nest & ul {
       list-style: none;
       display: flex;
@@ -109,13 +115,6 @@
       padding: 0.5rem;
     }
   }
-}
-
-.nav {
-  overflow: hidden; 
-  height: 0; 
-  opacity: 0;
-  transition: height 0ms 400ms, opacity 400ms 0ms;
 }
 
 .showNav {
