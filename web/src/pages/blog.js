@@ -34,7 +34,7 @@ export const query = graphql`
   }
 `
 
-const ArchivePage = props => {
+const BlogPage = props => {
   const {data, errors} = props
 
   if (errors) {
@@ -58,4 +58,4 @@ const ArchivePage = props => {
   )
 }
 
-export default ArchivePage
+export default BlogPage
