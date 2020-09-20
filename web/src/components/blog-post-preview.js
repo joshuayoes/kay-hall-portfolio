@@ -1,16 +1,18 @@
 import {format} from 'date-fns'
-import {Link} from 'gatsby'
 import React from 'react'
 import {buildImageObj, cn, getBlogUrl} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import PortableText from './portableText'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import styles from './blog-post-preview.module.css'
 import {responsiveTitle3} from './typography.module.css'
 
 function BlogPostPreview (props) {
   return (
-    <Link
+    <AniLink
+      paintDrip
+      color='black'
       className={props.isInList ? styles.inList : styles.inGrid}
       to={getBlogUrl(props.publishedAt, props.slug.current)}
     >
@@ -35,7 +37,7 @@ function BlogPostPreview (props) {
         )}
         <div className={styles.date}>{format(props.publishedAt, 'MMMM Do, YYYY')}</div>
       </div>
-    </Link>
+    </AniLink>
   )
 }
 

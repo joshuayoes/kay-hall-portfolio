@@ -1,6 +1,6 @@
-import {Link} from 'gatsby'
 import React from 'react'
 import BlogPostPreview from './blog-post-preview'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import styles from './blog-post-preview-grid.module.css'
 
@@ -18,7 +18,7 @@ function BlogPostPreviewGrid (props) {
       </ul>
       {props.browseMoreHref && (
         <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>Browse more</Link>
+          <AniLink paintDrip color='black' to={props.browseMoreHref}>Browse more</AniLink>
         </div>
       )}
     </div>
