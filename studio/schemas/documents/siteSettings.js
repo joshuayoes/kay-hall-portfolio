@@ -21,6 +21,15 @@ export default {
       description: 'Describe your blog for search engines and social media.'
     },
     {
+      name: 'hero',
+      type: 'image',
+      title: 'Hero',
+      description: 'Hero image for home page',
+      options: {
+        hotspot: true
+      }
+    },
+    {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',

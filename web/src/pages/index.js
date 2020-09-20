@@ -3,7 +3,8 @@ import {graphql} from 'gatsby'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
+  filterOutDocsPublishedInTheFuture,
+  buildImageObj
 } from '../lib/helpers'
 import BlogPostPreviewList from '../components/blog-post-preview-list'
 import Container from '../components/container'
@@ -11,6 +12,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import styles from '../styles/index.module.css'
+import {imageUrlFor} from '../lib/image-url'
 
 const IndexPage = props => {
   const {data, errors} = props
@@ -36,12 +38,25 @@ const IndexPage = props => {
     )
   }
 
+  console.log(site.hero)
+
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 className={styles.header}>{site.title}</h1>
-        <p className={styles.p}>{site.subtitle}</p>
+        <section className={styles.hero}>
+          <h1>{site.title}</h1>
+          <p>{site.subtitle}</p>
+          <img
+            src={imageUrlFor(buildImageObj(site.hero))
+              .width(600)
+              .height(600)
+              .crop('focalpoint')
+              .url()}
+            alt={site.title}
+          />
+        </section>
+
         {postNodes && (
           <BlogPostPreviewList
             title='Latest blog posts'
@@ -85,6 +100,27 @@ export const query = graphql`
       subtitle
       description
       keywords
+      hero {
+        asset {
+          _id
+        }
+        crop {
+          _key
+          _type
+          left
+          bottom
+          right
+          top
+        }
+        hotspot {
+          y
+          x
+          width
+          height
+          _type
+          _key
+        }  
+      }
     }
     posts: allSanityPost(
       limit: 6

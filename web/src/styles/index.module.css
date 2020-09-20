@@ -7,19 +7,50 @@
     }
   }
   
+.hero h1 {
+  grid-area: h1;
+  margin: 0;
+  padding: 0;
+  align-self: end;
 
-.header {
-    animation-name: fadeIn;
-    animation-duration: 600ms;
-    animation-delay: 200ms;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in-out;  
+  animation-name: fadeIn;
+  animation-duration: 600ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;  
 }
 
-.p {
-    animation-name: fadeIn;
-    animation-duration: 600ms;
-    animation-delay: 400ms;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in-out;  
+.hero p {
+  grid-area: p;
+  margin: 0;
+  padding: 0;
+
+  animation-name: fadeIn;
+  animation-duration: 600ms;
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;  
+}
+
+.hero img {
+  grid-area: img;
+  width: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  object-fit: cover;
+
+  animation-name: fadeIn;
+  animation-duration: 600ms;
+  animation-delay: 400ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;  
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  grid-template-areas: 
+    'h1 img'
+    'p  img';
 }
