@@ -1,21 +1,21 @@
-import React from 'react'
-import {graphql} from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture,
   buildImageObj
-} from '../lib/helpers'
-import BlogPostPreviewList from '../components/blog-post-preview-list'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
-import styles from '../styles/index.module.css'
-import {imageUrlFor} from '../lib/image-url'
+} from "../lib/helpers"
+import BlogPostPreviewList from "../components/blog-post-preview-list"
+import Container from "../components/container"
+import GraphQLErrorList from "../components/graphql-error-list"
+import SEO from "../components/seo"
+import Layout from "../containers/layout"
+import styles from "../styles/index.module.css"
+import { imageUrlFor } from "../lib/image-url"
 
 const IndexPage = props => {
-  const {data, errors} = props
+  const { data, errors } = props
 
   if (errors) {
     return (
@@ -28,8 +28,8 @@ const IndexPage = props => {
   const site = (data || {}).site
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   if (!site) {
@@ -38,11 +38,9 @@ const IndexPage = props => {
     )
   }
 
-  console.log(site.hero)
-
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} image={site.hero} />
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <section className={styles.hero}>
           <h1>{site.title}</h1>
@@ -51,7 +49,7 @@ const IndexPage = props => {
             src={imageUrlFor(buildImageObj(site.hero))
               .width(600)
               .height(600)
-              .crop('focalpoint')
+              .crop("focalpoint")
               .url()}
             alt={site.title}
           />
@@ -59,9 +57,9 @@ const IndexPage = props => {
 
         {postNodes && (
           <BlogPostPreviewList
-            title='Latest blog posts'
+            title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref='/blog/'
+            browseMoreHref="/blog/"
           />
         )}
       </Container>
@@ -95,7 +93,7 @@ export const query = graphql`
   }
 
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       subtitle
       description
@@ -119,13 +117,13 @@ export const query = graphql`
           height
           _type
           _key
-        }  
+        }
       }
     }
     posts: allSanityPost(
       limit: 6
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+      sort: { fields: [publishedAt], order: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {
       edges {
         node {
