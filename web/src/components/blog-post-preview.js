@@ -1,18 +1,18 @@
-import {format} from 'date-fns'
-import React from 'react'
-import {buildImageObj, cn, getBlogUrl} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import PortableText from './portableText'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { format } from "date-fns"
+import React from "react"
+import { buildImageObj, cn, getBlogUrl } from "../lib/helpers"
+import { imageUrlFor } from "../lib/image-url"
+import PortableText from "./portableText"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-import styles from './blog-post-preview.module.css'
-import {responsiveTitle3} from './typography.module.css'
+import styles from "./blog-post-preview.module.css"
+import { responsiveTitle3 } from "./typography.module.css"
 
-function BlogPostPreview (props) {
+function BlogPostPreview(props) {
   return (
     <AniLink
       paintDrip
-      color='black'
+      color="black"
       className={props.isInList ? styles.inList : styles.inGrid}
       to={getBlogUrl(props.publishedAt, props.slug.current)}
     >
@@ -22,7 +22,7 @@ function BlogPostPreview (props) {
             src={imageUrlFor(buildImageObj(props.mainImage))
               .width(600)
               .height(Math.floor((9 / 16) * 600))
-              .auto('format')
+              .auto("format")
               .url()}
             alt={props.mainImage.alt}
           />
@@ -35,7 +35,7 @@ function BlogPostPreview (props) {
             <PortableText blocks={props._rawExcerpt} />
           </div>
         )}
-        <div className={styles.date}>{format(props.publishedAt, 'MMMM Do, YYYY')}</div>
+        <div className={styles.date}>{format(props.publishedAt, "MMMM Do, YYYY")}</div>
       </div>
     </AniLink>
   )
