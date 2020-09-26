@@ -11,14 +11,13 @@ function SEO ({description, lang, meta, keywords, title, image}) {
       query={detailsQuery}
       render={data => {
         const metaDescription = description || (data.site && data.site.description) || ''
-        const siteTitle = (data.site && data.site.title) || ''
+        const siteTitle = title || (data.site && data.site.title) || ''
         const siteAuthor = (data.site && data.site.author) || ''
-        const metaImage =
-          image && image.asset
-            ? imageUrlFor(buildImageObj(image))
-              .width(1200)
-              .url()
-            : ''
+        const imageSource = image || (data.site && data.site.hero)
+        const metaImage = imageUrlFor(buildImageObj(imageSource))
+          .width(1200)
+          .crop('focalpoint')
+          .url()
 
         return (
           <Helmet
@@ -102,6 +101,28 @@ const detailsQuery = graphql`
       description
       keywords
       author
+      hero {
+        asset {
+          _id
+          url
+        }
+        crop {
+          _key
+          _type
+          left
+          bottom
+          right
+          top
+        }
+        hotspot {
+          y
+          x
+          width
+          height
+          _type
+          _key
+        }
+      }
     }
   }
 `
