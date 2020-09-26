@@ -48,10 +48,6 @@ function SEO({ description, lang, meta, keywords, title, image }) {
                 content: metaImage
               },
               {
-                property: "og:url",
-                content: data.site.host
-              },
-              {
                 name: "twitter:card",
                 content: "summary"
               },
@@ -129,9 +125,6 @@ const detailsQuery = graphql`
           _key
         }
       }
-    }
-    site {
-      host
     }
   }
 `
