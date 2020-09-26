@@ -10,13 +10,15 @@ function SEO({ description, lang, meta, keywords, title, image }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription = description || (data.site && data.site.description) || ""
-        const siteTitle = title || (data.site && data.site.title) || ""
-        const siteAuthor = (data.site && data.site.author) || ""
-        const imageSource = image || (data.site && data.site.hero)
+        const metaDescription =
+          description || (data.siteSettings && data.siteSettings.description) || ""
+        const siteTitle = title || (data.siteSettings && data.siteSettings.title) || ""
+        const siteAuthor = (data.siteSettings && data.siteSettings.author) || ""
+        const imageSource = image || (data.siteSettings && data.siteSettings.hero)
         const metaImage = imageUrlFor(buildImageObj(imageSource))
-          .width(1200)
-          .crop("focalpoint")
+          .size(1200, 627)
+          .fit("crop")
+          .crop("top")
           .url()
 
         return (
@@ -44,6 +46,10 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               {
                 property: "og:image",
                 content: metaImage
+              },
+              {
+                property: "og:url",
+                content: data.site.host
               },
               {
                 name: "twitter:card",
@@ -96,7 +102,7 @@ export default SEO
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
-    site: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+    siteSettings: sanitySiteSettings(_id: { eq: "siteSettings" }) {
       title
       description
       keywords
@@ -123,6 +129,9 @@ const detailsQuery = graphql`
           _key
         }
       }
+    }
+    site {
+      host
     }
   }
 `
